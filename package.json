@@ -43,7 +43,6 @@
       "js",
       "vue"
     ],
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/index.js"

@@ -7,18 +7,23 @@ Portions both preprocessors are heavily based [vueify](https://github.com/vuejs/
 
 ### Installation
 
-  * install package `yarn add --dev jest-vue-preprocessor` or `npm install --saveDev jest-vue-preprocessor`
-  * modify package.json's `jest` section:
+  1.  add package you your project
+    
+   *  `yarn add --dev jest-vue-preprocessor` or  `npm install --saveDev jest-vue-preprocessor`
+ 
+  2.  modify package.json's **jest** section by adding/editing **moduleFileExtensions** and **transform** properites:
+
     ```json
     "jest": {
       "moduleFileExtensions": [
         "js",
         "vue"
       ],
-      "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
       "transform": {
         "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
         ".*\\.(vue)$": "<rootDir>/index.js"
       }
     }
     ```
+  3.  Start writing test that can import `*.vue` components - see example **./tests/index.spec.js**
+  4.  Profit!
