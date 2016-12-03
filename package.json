@@ -1,0 +1,52 @@
+{
+  "name": "jest-vue-preprocessor",
+  "version": "0.1.0",
+  "description": "Preprocessor that allows importing of .vue files in jest tests",
+  "engines": {
+    "node": "6.x.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "test:ci": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vire/jest-vue-preprocessor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vire/jest-vue-preprocessor/issues"
+  },
+  "keywords": [
+    "jest",
+    "vue",
+    "test",
+    "preprocessor",
+    "transform"
+  ],
+  "author": "Viliam Elischer <code.vire@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-jest": "^17.0.2",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "eslint": "^3.11.1",
+    "jest": "^17.0.3",
+    "pug": "^2.0.0-beta6",
+    "vue": "^2.1.4",
+    "vue-template-compiler": "^2.1.4",
+    "vue-template-es2015-compiler": "^1.3.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/index.js"
+    }
+  }
+}
