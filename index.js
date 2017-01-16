@@ -35,14 +35,14 @@ const extractHTML = (template, templatePath) => {
 const generateOutput = (script, renderFn, staticRenderFns) => {
   let output = '';
   output +=
-    ';(function(){\n' + script + '\n})()\n' +
-    'if (module.exports.__esModule) module.exports = module.exports.default\n';
-  output += 'var __vue__options__ = (typeof module.exports === "function"' +
+    '/* istanbul ignore next */;(function(){\n' + script + '\n})()\n' +
+    '/* istanbul ignore next */if (module.exports.__esModule) module.exports = module.exports.default\n';
+  output += '/* istanbul ignore next */var __vue__options__ = (typeof module.exports === "function"' +
     '? module.exports.options: module.exports)\n';
   if (renderFn && staticRenderFns) {
     output +=
-      '__vue__options__.render = ' + renderFn + '\n' +
-      '__vue__options__.staticRenderFns = ' + staticRenderFns + '\n';
+      '/* istanbul ignore next */__vue__options__.render = ' + renderFn + '\n' +
+      '/* istanbul ignore next */__vue__options__.staticRenderFns = ' + staticRenderFns + '\n';
   }
   return output;
 };
@@ -67,7 +67,7 @@ module.exports = {
       render = stringifyRender(res.render);
       staticRenderFns = stringifyStaticRender(res.staticRenderFns);
     }
-    
+
     return generateOutput(transformedScript, render, staticRenderFns);
   }
 };
