@@ -21,7 +21,7 @@ Portions both preprocessors are heavily based [vueify](https://github.com/vuejs/
       ],
       "transform": {
         "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-        ".*\\.(vue)$": "<rootDir>/index.js"
+        ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
       }
     }
     ```
