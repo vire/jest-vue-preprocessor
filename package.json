@@ -47,5 +47,8 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/index.js"
     }
+  },
+  "dependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0"
   }
 }
