@@ -1,6 +1,6 @@
 {
   "name": "jest-vue-preprocessor",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Preprocessor that allows importing of .vue files in jest tests",
   "engines": {
     "node": ">= 6.3"
