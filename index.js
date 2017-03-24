@@ -1,41 +1,21 @@
-/* eslint-env node */
 const vueCompiler = require('vue-template-compiler');
 const vueNextCompiler = require('vue-template-es2015-compiler');
 const babelCore = require('babel-core');
-const cosmiconfig = require('cosmiconfig');
-
-const getBabelConfig = () => {
-  let explorer = cosmiconfig('babel');
-  return new Promise(resolve => {
-    explorer.load(process.cwd())
-      .then(result => {
-        resolve(result.config);
-      })
-      .catch(() => {
-        resolve({
-          presets: ['es2015'],
-          plugins: ['transform-runtime'],
-        });
-      });
-  });
-};
 
 const transformBabel = src => {
-  return new Promise((resolve, reject) => {
-    try {
-      getBabelConfig()
-        .then((config) => {
-          let result = babelCore.transform(src, config).code;
-          resolve(result);
-        });
-    } catch (error) {
-      let errMsg = 'Failed to compile scr with `babel` at `vue-preprocessor`';
-      // eslint-disable-next-line
-      console.error(errMsg);
-      reject(errMsg);
-    }
-  });
+  const transformOptions = {
+    presets: ['es2015'],
+    plugins: ['transform-runtime'],
+  };
 
+  let result;
+  try {
+    result = babelCore.transform(src, transformOptions).code;
+  } catch (error) {
+    // eslint-disable-next-line
+    console.error('Failed to compile scr with `babel` at `vue-preprocessor`');
+  }
+  return result;
 };
 
 const extractHTML = (template, templatePath) => {
@@ -77,21 +57,17 @@ module.exports = {
     // LICENSE MIT
     // @author https://github.com/locobert
     // heavily based on vueify (Copyright (c) 2014-2016 Evan You)
-    return new Promise(resolve => {
-      const { script, template } = vueCompiler.parseComponent(src, { pad: true });
-      transformBabel(script.content).then(transformedScript => {
+    const { script, template } = vueCompiler.parseComponent(src, { pad: true});
+    const transformedScript = transformBabel(script.content);
+    let render;
+    let staticRenderFns;
+    if (template) {
+      const HTML = extractHTML(template, filePath);
+      const res = HTML && vueCompiler.compile(HTML);
+      render = stringifyRender(res.render);
+      staticRenderFns = stringifyStaticRender(res.staticRenderFns);
+    }
 
-        let render;
-        let staticRenderFns;
-        if (template) {
-          const HTML = extractHTML(template, filePath);
-          const res = HTML && vueCompiler.compile(HTML);
-          render = stringifyRender(res.render);
-          staticRenderFns = stringifyStaticRender(res.staticRenderFns);
-        }
-
-        resolve(generateOutput(transformedScript, render, staticRenderFns));
-      });
-    });
+    return generateOutput(transformedScript, render, staticRenderFns);
   }
 };
