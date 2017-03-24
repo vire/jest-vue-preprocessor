@@ -1,8 +1,11 @@
+/* eslint-env node */
 const vueCompiler = require('vue-template-compiler');
 const vueNextCompiler = require('vue-template-es2015-compiler');
 const babelCore = require('babel-core');
+const findBabelConfig = require('find-babel-config');
 
 const transformBabel = src => {
+  const {config} = findBabelConfig.sync(process.cwd());
   const transformOptions = {
     presets: ['es2015'],
     plugins: ['transform-runtime'],
@@ -10,7 +13,7 @@ const transformBabel = src => {
 
   let result;
   try {
-    result = babelCore.transform(src, transformOptions).code;
+    result = babelCore.transform(src, config || transformOptions).code;
   } catch (error) {
     // eslint-disable-next-line
     console.error('Failed to compile scr with `babel` at `vue-preprocessor`');
