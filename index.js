@@ -3,6 +3,8 @@ const vueCompiler = require('vue-template-compiler');
 const vueNextCompiler = require('vue-template-es2015-compiler');
 const babelCore = require('babel-core');
 const findBabelConfig = require('find-babel-config');
+const tsc = require('typescript');
+const tsconfig = require('tsconfig');
 
 const transformBabel = src => {
   const {config} = findBabelConfig.sync(process.cwd());
@@ -19,6 +21,30 @@ const transformBabel = src => {
     console.error('Failed to compile scr with `babel` at `vue-preprocessor`');
   }
   return result;
+};
+
+
+const transformTs = (src, path) => {
+  const {config} = tsconfig.loadSync(process.cwd());
+  let result;
+  try {
+    result = tsc.transpile(
+      src,
+      config.compilerOptions,
+      path,
+      []
+    );
+  } catch (error) {
+    // eslint-disable-next-line
+    console.error('Failed to compile src with `tsc` at `vue-preprocessor`');
+  }
+  return result;
+};
+
+const transforms = {
+  'ts': transformTs,
+  'typescript': transformTs,
+  'babel': transformBabel
 };
 
 const extractHTML = (template, templatePath) => {
@@ -61,7 +87,7 @@ module.exports = {
     // @author https://github.com/locobert
     // heavily based on vueify (Copyright (c) 2014-2016 Evan You)
     const { script, template } = vueCompiler.parseComponent(src, { pad: true});
-    const transformedScript = transformBabel(script.content);
+    const transformedScript = script ? transforms[script.lang || 'babel'](script.content) : '';
     let render;
     let staticRenderFns;
     if (template) {
