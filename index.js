@@ -1,10 +1,10 @@
 /* eslint-env node */
+const path = require('path');
 const vueCompiler = require('vue-template-compiler');
 const vueNextCompiler = require('vue-template-es2015-compiler');
 const babelCore = require('babel-core');
 const findBabelConfig = require('find-babel-config');
 const tsc = require('typescript');
-const tsconfig = require('tsconfig');
 
 const transformBabel = src => {
   const {config} = findBabelConfig.sync(process.cwd());
@@ -23,17 +23,19 @@ const transformBabel = src => {
   return result;
 };
 
+const getTsConfig = () => {
+  try {
+    return require(path.resolve(process.cwd(), 'tsconfig.json'));
+  } catch (error) {
+    return {};
+  }
+};
 
 const transformTs = (src, path) => {
-  const {config} = tsconfig.loadSync(process.cwd());
+  const  {compilerOptions} = getTsConfig();
   let result;
   try {
-    result = tsc.transpile(
-      src,
-      config.compilerOptions,
-      path,
-      []
-    );
+    result = tsc.transpile(src, compilerOptions, path, []);
   } catch (error) {
     // eslint-disable-next-line
     console.error('Failed to compile src with `tsc` at `vue-preprocessor`');
@@ -42,9 +44,9 @@ const transformTs = (src, path) => {
 };
 
 const transforms = {
-  'ts': transformTs,
-  'typescript': transformTs,
-  'babel': transformBabel
+  ts: transformTs,
+  typescript: transformTs,
+  babel: transformBabel
 };
 
 const extractHTML = (template, templatePath) => {

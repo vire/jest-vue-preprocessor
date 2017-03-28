@@ -51,7 +51,6 @@
   "dependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
     "find-babel-config": "^1.0.1",
-    "tsconfig": "^6.0.0",
     "typescript": "^2.2.2"
   }
 }
