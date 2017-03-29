@@ -1,19 +1,22 @@
 {
   "name": "jest-vue-preprocessor",
-  "version": "0.2.0",
+  "version": "0.2.0-development",
   "description": "Preprocessor that allows importing of .vue files in jest tests",
   "engines": {
     "node": ">= 6.3"
   },
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "test": "jest --no-cache",
-    "test:ci": "jest --coverage"
+    "commit": "git-cz",
+    "commitmsg": "validate-commit-msg",
+    "lint": "eslint --fix .",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test:ci": "npm test -- --coverage",
+    "test": "jest --no-cache"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vire/jest-vue-preprocessor.git"
+    "url": "https://github.com/vire/jest-vue-preprocessor.git"
   },
   "bugs": {
     "url": "https://github.com/vire/jest-vue-preprocessor/issues"
@@ -28,15 +31,20 @@
   "author": "Viliam Elischer <code.vire@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-jest": "^19.0.0",
-    "babel-preset-es2015": "^6.18.0",
-    "eslint": "^3.11.1",
-    "jest": "^19.0.2",
-    "pug": "^2.0.0-beta6",
-    "vue": "^2.2.6",
-    "vue-property-decorator": "^4.0.0",
-    "vue-template-compiler": "^2.2.6",
-    "vue-template-es2015-compiler": "^1.3.2"
+    "babel-jest": "19.0.0",
+    "babel-preset-es2015": "6.18.0",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
+    "eslint": "3.11.1",
+    "husky": "0.13.3",
+    "jest": "19.0.2",
+    "pug": "2.0.0-beta6",
+    "semantic-release": "6.3.2",
+    "validate-commit-msg": "2.12.0",
+    "vue": "2.2.6",
+    "vue-property-decorator": "4.0.0",
+    "vue-template-compiler": "2.2.6",
+    "vue-template-es2015-compiler": "1.3.2"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -49,8 +57,17 @@
     }
   },
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "find-babel-config": "^1.0.1",
-    "typescript": "^2.2.2"
+    "babel-plugin-transform-runtime": "6.23.0",
+    "find-babel-config": "1.0.1",
+    "typescript": "2.2.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "maxSubjectLength": 120
+    }
   }
 }
