@@ -1,30 +1,31 @@
 language: node_js
-
+cache:
+  yarn: true
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-  - "6"
-
+  - '6'
 env:
   - CXX=g++-4.8
-
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-
 before_install:
   - npm install -g codecov
   - npm install -g yarn --cache-min 999999999
-
 install:
   - yarn
-
 script:
   - yarn test:ci
   - codecov
-
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
-cache: yarn
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
