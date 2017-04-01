@@ -1,4 +1,4 @@
-# Contributing 
+# Contributing
 
 ## Git Commit Guidelines
 
@@ -7,7 +7,7 @@ readable messages** that are easy to follow when looking through the **project h
 we use the git commit messages to **generate the AngularJS change log**.
 
 The commit message formatting can be added using a typical git workflow or through the use of a CLI
-wizard ([Commitizen](https://github.com/commitizen/cz-cli)). To use the wizard, run `yarn run commit`
+wizard ([Commitizen](https://github.com/commitizen/cz-cli)). To use the wizard, run `yarn commit`
 in your terminal after staging your changes in git.
 
 ### Commit Message Format
