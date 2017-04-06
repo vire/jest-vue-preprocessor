@@ -21,11 +21,12 @@ before_install:
 install:
   - yarn
 script:
+  - yarn style
   - yarn test:ci
   - codecov
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - npm run semantic-release
+  - npm run release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
