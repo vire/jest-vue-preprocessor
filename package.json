@@ -27,7 +27,7 @@
     "find-babel-config": "1.1.0",
     "typescript": "2.4.2",
     "vue-property-decorator": "5.1.1",
-    "vue-template-compiler": "2.4.1",
+    "vue-template-compiler": "2.4.2",
     "vue-template-es2015-compiler": "1.5.3"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "pug": "2.0.0-rc.2",
     "semantic-release": "6.3.6",
     "validate-commit-msg": "2.13.0",
-    "vue": "2.4.1"
+    "vue": "2.4.2"
   },
   "scripts": {
     "cz": "git-cz",
