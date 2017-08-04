@@ -2,6 +2,7 @@ import Vue from 'vue';
 import FooComponent from './fixtures/FooComponent.vue';
 import TsComponent from './fixtures/TsComponent.vue';
 import TypescriptComponent from './fixtures/TypescriptComponent.vue';
+import AbsolutePathComponent from 'test/fixtures/FooComponent.vue';
 
 const doTest = (Component) => {
   const vm = new Vue({
@@ -32,5 +33,9 @@ describe('preprocessor', () => {
 
   it('should process a `.vue` file with typescript lang', () => {
     doTest(TypescriptComponent);
+  });
+
+  it('should process an absolute path of a `.vue` Component', () => {
+    doTest(AbsolutePathComponent);
   });
 });
