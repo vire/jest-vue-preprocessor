@@ -29,6 +29,9 @@ Portions both preprocessors are heavily based [vueify](https://github.com/vuejs/
   3.  Start writing test that can import `*.vue` components - see example **./tests/index.spec.js**
   4.  Profit!
 
+  ### Customization
+
+  * non-relative component imports - you properly set jest's `moduleMapper` option - see [#25](https://github.com/vire/jest-vue-preprocessor/issues/25)
 
   ### [Contributing guide](https://github.com/vire/jest-vue-preprocessor/blob/master/CONTRIBUTING.md)
 
