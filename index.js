@@ -7,7 +7,7 @@ const findBabelConfig = require('find-babel-config');
 const tsc = require('typescript');
 
 const transformBabel = src => {
-  const {config} = findBabelConfig.sync(process.cwd());
+  const { config } = findBabelConfig.sync(process.cwd());
   const transformOptions = {
     presets: ['es2015'],
     plugins: ['transform-runtime'],
@@ -32,7 +32,7 @@ const getTsConfig = () => {
 };
 
 const transformTs = (src, path) => {
-  const  {compilerOptions} = getTsConfig();
+  const { compilerOptions } = getTsConfig();
   let result;
   try {
     result = tsc.transpile(src, compilerOptions, path, []);
@@ -46,7 +46,7 @@ const transformTs = (src, path) => {
 const transforms = {
   ts: transformTs,
   typescript: transformTs,
-  babel: transformBabel
+  babel: transformBabel,
 };
 
 const extractHTML = (template, templatePath) => {
@@ -66,14 +66,21 @@ const extractHTML = (template, templatePath) => {
 const generateOutput = (script, renderFn, staticRenderFns) => {
   let output = '';
   output +=
-    '/* istanbul ignore next */;(function(){\n' + script + '\n})()\n' +
+    '/* istanbul ignore next */;(function(){\n' +
+    script +
+    '\n})()\n' +
     '/* istanbul ignore next */if (module.exports.__esModule) module.exports = module.exports.default\n';
-  output += '/* istanbul ignore next */var __vue__options__ = (typeof module.exports === "function"' +
+  output +=
+    '/* istanbul ignore next */var __vue__options__ = (typeof module.exports === "function"' +
     '? module.exports.options: module.exports)\n';
   if (renderFn && staticRenderFns) {
     output +=
-      '/* istanbul ignore next */__vue__options__.render = ' + renderFn + '\n' +
-      '/* istanbul ignore next */__vue__options__.staticRenderFns = ' + staticRenderFns + '\n';
+      '/* istanbul ignore next */__vue__options__.render = ' +
+      renderFn +
+      '\n' +
+      '/* istanbul ignore next */__vue__options__.staticRenderFns = ' +
+      staticRenderFns +
+      '\n';
   }
   return output;
 };
@@ -88,7 +95,7 @@ module.exports = {
     // LICENSE MIT
     // @author https://github.com/locobert
     // heavily based on vueify (Copyright (c) 2014-2016 Evan You)
-    const { script, template } = vueCompiler.parseComponent(src, { pad: true});
+    const { script, template } = vueCompiler.parseComponent(src, { pad: true });
     const transformedScript = script ? transforms[script.lang || 'babel'](script.content) : '';
     let render;
     let staticRenderFns;
@@ -100,5 +107,5 @@ module.exports = {
     }
 
     return generateOutput(transformedScript, render, staticRenderFns);
-  }
+  },
 };
