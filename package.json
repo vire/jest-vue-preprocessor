@@ -36,6 +36,8 @@
     "eslint": "4.2.0",
     "husky": "0.14.3",
     "jest": "20.0.4",
+    "lint-staged": "4.0.3",
+    "prettier": "1.5.3",
     "pug": "2.0.0-rc.2",
     "semantic-release": "6.3.6",
     "validate-commit-msg": "2.13.0",
@@ -47,6 +49,8 @@
     "cz": "git-cz",
     "commitmsg": "validate-commit-msg",
     "prepush": "npm run verify",
+    "precommit": "lint-staged",
+    "prettier": "prettier --single-quote --print-width 120 --trailing-comma es5 index.js",
     "verify": "npm run style && npm t",
     "test": "jest",
     "test:watch": "npm t -- --watch",
@@ -77,6 +81,13 @@
       "types": "conventional-commit-types",
       "maxSubjectLength": 120
     }
+  },
+  "lint-staged": {
+    "./index.js": [
+      "npm run prettier -- --write",
+      "style:fix",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "vue-template-compiler": "2.4.x",
