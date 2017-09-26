@@ -7,13 +7,14 @@
 
 <script lang="ts">
   import Vue = require('vue')
-  import { Component } from 'vue-property-decorator'
+  import { Component, Prop } from 'vue-property-decorator'
 
   @Component
   export default class App extends Vue {
     name = 'app'
+    @Prop() onClick: Function
     clickHandler(input) {
-      return input + 1;
+      this.onClick(input);
     }
   }
 </script>
