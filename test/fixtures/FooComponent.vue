@@ -7,11 +7,17 @@
 
 <script>
   export default {
+    props: {
+      onClick: {
+        type: Function,
+        required: true
+      }
+    },
     name: 'app',
     methods: {
       clickHandler(input) {
-        return input + 1;
-      }
+        this.onClick(input);
+      },
     }
   }
 </script>
