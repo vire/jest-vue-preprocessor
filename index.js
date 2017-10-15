@@ -1,10 +1,16 @@
 /* eslint-env node */
+const fs = require('fs');
+const path = require('path');
 const vueCompiler = require('vue-template-compiler');
 const vueNextCompiler = require('vue-template-es2015-compiler');
 const transforms = require('./transforms');
 
 const extractHTML = (template, templatePath) => {
   let resultHTML = '';
+
+  if (template.content === '' && template.src !== '') {
+    template.content = fs.readFileSync(path.resolve(path.dirname(templatePath), template.src), 'utf8');
+  }
 
   if (!template.lang || template.lang === 'resultHTML') {
     resultHTML = template.content;
@@ -15,6 +21,16 @@ const extractHTML = (template, templatePath) => {
   }
 
   return resultHTML;
+};
+
+const extractScriptContent = (script, scriptPath) => {
+  if( !script ) {
+    throw 'No script available to transform';
+  }
+  if (script.content === '' && script.src !== '') {
+    script.content = fs.readFileSync(path.resolve(path.dirname(scriptPath), script.src), 'utf8');
+  }
+  return script.content;
 };
 
 const stringifyRender = render => vueNextCompiler('function render () {' + render + '}');
@@ -30,10 +46,6 @@ module.exports = {
 
     const { script, template } = vueCompiler.parseComponent(src, { pad: false });
 
-    if (!script) {
-      return { code: '' };
-    }
-
     let render;
     let staticRenderFns;
     if (template) {
@@ -42,8 +54,11 @@ module.exports = {
       render = stringifyRender(res.render);
       staticRenderFns = stringifyStaticRender(res.staticRenderFns);
     }
-    const transformKey = script.lang || 'babel';
 
-    return transforms[transformKey](script.content, filePath, render, staticRenderFns);
+    let scriptContent = { code: '' };
+    scriptContent = extractScriptContent(script, filePath);
+
+    const transformKey = script.lang || 'babel';
+    return transforms[transformKey](scriptContent, filePath, render, staticRenderFns);
   },
 };

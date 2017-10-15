@@ -3,6 +3,7 @@ import FooComponent from './fixtures/FooComponent.vue';
 import TsComponent from './fixtures/TsComponent.vue';
 import TypescriptComponent from './fixtures/TypescriptComponent.vue';
 import AbsolutePathComponent from 'test/fixtures/FooComponent.vue';
+import srcImportComponent from './fixtures/srcImportComponent/srcImportComponent.vue';
 
 const doTest = (Component) => {
   const mockFn = jest.fn();
@@ -40,5 +41,9 @@ describe('preprocessor', () => {
 
   it('should process an absolute path of a `.vue` Component', () => {
     doTest(AbsolutePathComponent);
+  });
+
+  it('should process and parse a .vue component containing src referenecs', () => {
+    doTest(srcImportComponent);
   });
 });
