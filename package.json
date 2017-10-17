@@ -99,7 +99,7 @@
     ]
   },
   "peerDependencies": {
-    "vue-template-compiler": "2.4.x",
-    "vue-template-es2015-compiler": "1.5.x"
+    "vue-template-compiler": "2.5.x",
+    "vue-template-es2015-compiler": "1.6.x"
   }
 }
