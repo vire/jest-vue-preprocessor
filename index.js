@@ -9,7 +9,10 @@ const extractHTML = (template, templatePath) => {
   let resultHTML = '';
 
   if (template.content === '' && template.src !== '') {
-    template.content = fs.readFileSync(path.resolve(path.dirname(templatePath), template.src), 'utf8');
+    template.content = fs.readFileSync(
+      path.resolve(path.dirname(templatePath), template.src),
+      'utf8'
+    );
   }
 
   if (!template.lang || template.lang === 'resultHTML') {
@@ -24,7 +27,7 @@ const extractHTML = (template, templatePath) => {
 };
 
 const extractScriptContent = (script, scriptPath) => {
-  if( !script ) {
+  if (!script) {
     throw 'No script available to transform';
   }
   if (script.content === '' && script.src !== '') {
@@ -35,7 +38,8 @@ const extractScriptContent = (script, scriptPath) => {
 
 const stringifyRender = render => vueNextCompiler('function render () {' + render + '}');
 
-const stringifyStaticRender = staticRenderFns => `[${staticRenderFns.map(stringifyRender).join(',')}]`;
+const stringifyStaticRender = staticRenderFns =>
+  `[${staticRenderFns.map(stringifyRender).join(',')}]`;
 
 module.exports = {
   process(src, filePath) {

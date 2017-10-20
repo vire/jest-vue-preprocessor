@@ -30,32 +30,29 @@ function appendRenderPlugin(render, staticRenderFns) {
         Program: {
           exit(path) {
             path.pushContainer('body', buildVueOptions());
-          }
+          },
         },
         MemberExpression(path) {
-          if (path.get('object.name').node === 'exports' &&
+          if (
+            path.get('object.name').node === 'exports' &&
             path.get('property.name').node === 'default'
           ) {
-            path.replaceWith(
-              t.memberExpression(t.identifier('module'), t.identifier('exports'))
-            );
+            path.replaceWith(t.memberExpression(t.identifier('module'), t.identifier('exports')));
           }
-        }
-      }
+        },
+      },
     };
   };
 }
 
-module.exports = function transformBabel (src, filename, render, staticRenderFns, inputSourceMap) {
+module.exports = function transformBabel(src, filename, render, staticRenderFns, inputSourceMap) {
   const { config = defaultConfig } = findBabelConfig.sync(process.cwd());
 
   const combinedTransformOptions = Object.assign({}, config, {
     sourceMaps: true,
     inputSourceMap,
     filename,
-    plugins: (config.plugins || []).concat([
-      appendRenderPlugin(render, staticRenderFns)
-    ])
+    plugins: (config.plugins || []).concat([appendRenderPlugin(render, staticRenderFns)]),
   });
 
   let result;
