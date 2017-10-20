@@ -23,6 +23,7 @@
     "vue-property-decorator": "6.0.0"
   },
   "devDependencies": {
+    "babel-core": "6.26.0",
     "babel-jest": "21.2.0",
     "babel-preset-es2015": "6.24.1",
     "commitizen": "2.9.6",
@@ -30,7 +31,7 @@
     "eslint": "4.9.0",
     "husky": "0.14.3",
     "jest": "21.2.1",
-    "lint-staged": "4.2.3",
+    "lint-staged": "4.3.0",
     "prettier": "1.7.4",
     "pug": "2.0.0-rc.4",
     "semantic-release": "8.2.0",
