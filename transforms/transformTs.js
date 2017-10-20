@@ -13,19 +13,12 @@ const getTsConfig = () => {
 };
 
 module.exports = function transformTs(src, filename, render, staticRenderFns) {
-  const compilerOptions = Object.assign(
-    {},
-    getTsConfig().compilerOptions,
-    {
-      sourceMap: true
-    }
-  );
+  const compilerOptions = Object.assign({}, getTsConfig().compilerOptions, {
+    sourceMap: true,
+  });
 
   try {
-    const {
-      outputText,
-      sourceMapText
-    } = tsc.transpileModule(src, { compilerOptions });
+    const { outputText, sourceMapText } = tsc.transpileModule(src, { compilerOptions });
 
     return transformBabel(outputText, filename, render, staticRenderFns, JSON.parse(sourceMapText));
   } catch (error) {

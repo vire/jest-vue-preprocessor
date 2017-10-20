@@ -5,16 +5,17 @@ import TypescriptComponent from './fixtures/TypescriptComponent.vue';
 import AbsolutePathComponent from 'test/fixtures/FooComponent.vue';
 import srcImportComponent from './fixtures/srcImportComponent/srcImportComponent.vue';
 
-const doTest = (Component) => {
+const doTest = Component => {
   const mockFn = jest.fn();
 
   const vm = new Vue({
     el: document.createElement('div'),
-    render: h => h(Component, {
-      props: {
-        onClick: mockFn
-      }
-    })
+    render: h =>
+      h(Component, {
+        props: {
+          onClick: mockFn,
+        },
+      }),
   });
 
   // check if template HTML compiled properly
