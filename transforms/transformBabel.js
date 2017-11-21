@@ -59,8 +59,10 @@ module.exports = function transformBabel(src, filename, render, staticRenderFns,
   try {
     result = babelCore.transform(src, combinedTransformOptions);
   } catch (error) {
-    // eslint-disable-next-line
+    /* eslint-disable no-console */
     console.error('Failed to compile scr with `babel` at `vue-preprocessor`');
+    console.error('Babel:', error);
+    /* eslint-enable */
   }
   return result;
 };
