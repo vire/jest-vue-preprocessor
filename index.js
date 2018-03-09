@@ -41,9 +41,8 @@ const stringifyRender = render => vueNextCompiler('function render () {' + rende
 const stringifyStaticRender = staticRenderFns =>
   `[${staticRenderFns.map(stringifyRender).join(',')}]`;
 
-const isAFunctionalComponent = template => {
-  return template && template.attrs && template.functional;
-};
+const isAFunctionalComponent = template => 
+  template && template.attrs && template.functional;
 
 module.exports = {
   process(src, filePath) {
