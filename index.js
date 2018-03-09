@@ -28,7 +28,7 @@ const extractHTML = (template, templatePath) => {
 
 const extractScriptContent = (script, scriptPath) => {
   if (!script) {
-    throw 'No script available to transform';
+    throw 'No script available to transform!';
   }
   if (script.content === '' && script.src !== '') {
     script.content = fs.readFileSync(path.resolve(path.dirname(scriptPath), script.src), 'utf8');
