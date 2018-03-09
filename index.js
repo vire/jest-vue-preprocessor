@@ -47,7 +47,7 @@ const isAFunctionalComponent = template => {
 
   if (typeof template !== 'string') {
     console.log(template)
-    console.log(object.keys(template))
+    console.log(Object.keys(template))
     console.log(JSON.stringify(template))
     throw new Error(`template is not a string! ${template}`);
   }
