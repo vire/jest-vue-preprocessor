@@ -28,7 +28,7 @@ const extractHTML = (template, templatePath) => {
 
 const extractScriptContent = (script, scriptPath) => {
   if (!script) {
-    throw 'No script available to transform!';
+    throw 'No script available to transform';
   }
   if (script.content === '' && script.src !== '') {
     script.content = fs.readFileSync(path.resolve(path.dirname(scriptPath), script.src), 'utf8');
@@ -42,7 +42,7 @@ const stringifyStaticRender = staticRenderFns =>
   `[${staticRenderFns.map(stringifyRender).join(',')}]`;
 
 const isAFunctionalComponent = template =>
-  template && template.attrs && template.functional;
+  template && template.attrs && template.attrs.functional;
 
 module.exports = {
   process(src, filePath) {
@@ -58,12 +58,8 @@ module.exports = {
     // thus breaking any tests that use a functional component, just
     // return a dummy script.
     // @author https://github.com/candyapplecorn
-    if (!script && isAFunctionalComponent(template)) {
-      return ';'  
-    } else if (!script) {
-      console.log(JSON.stringify(template));
+    if (!script && isAFunctionalComponent(template))
       return ';'
-    }
 
     let render;
     let staticRenderFns;
