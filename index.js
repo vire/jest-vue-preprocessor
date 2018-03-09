@@ -59,7 +59,7 @@ module.exports = {
     // return a dummy script.
     // @author https://github.com/candyapplecorn
     if (!script && isAFunctionalComponent(template))
-      return ';'
+      return ';';
 
     let render;
     let staticRenderFns;
