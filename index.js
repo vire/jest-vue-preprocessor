@@ -42,17 +42,7 @@ const stringifyStaticRender = staticRenderFns =>
   `[${staticRenderFns.map(stringifyRender).join(',')}]`;
 
 const isAFunctionalComponent = template => {
-  if (typeof template !== 'string' && Array.isArray(template))
-    template = template.join(' ');
-
-  if (typeof template !== 'string') {
-    console.log(template)
-    console.log(Object.keys(template))
-    console.log(JSON.stringify(template))
-    throw new Error(`template is not a string! ${template}`);
-  }
-
-  return /template[^>]*functional/.test(template);
+  return template && template.attrs && template.functional;
 };
 
 module.exports = {
