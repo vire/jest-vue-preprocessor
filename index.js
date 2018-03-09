@@ -41,6 +41,16 @@ const stringifyRender = render => vueNextCompiler('function render () {' + rende
 const stringifyStaticRender = staticRenderFns =>
   `[${staticRenderFns.map(stringifyRender).join(',')}]`;
 
+const isAFunctionalComponent = template => {
+  if (typeof template !== 'string' && Array.isArray(template))
+    template = template.join(' ');
+
+  if (typeof template !== 'string')
+    throw new Error(`template is not a string! ${template}`);
+
+  return /template[^>]*functional/.test(template);
+};
+
 module.exports = {
   process(src, filePath) {
     // code copied from https://github.com/locoslab/vue-typescript-jest/blob/master/preprocessor.js
@@ -55,7 +65,6 @@ module.exports = {
     // thus breaking any tests that use a functional component, just
     // return a dummy script.
     // @author https://github.com/candyapplecorn
-    const isAFunctionalComponent = template => /template[^>]*functional/.test(template);
     if (!script && isAFunctionalComponent(template)) {
       return ';'  
     }
