@@ -41,7 +41,7 @@ const stringifyRender = render => vueNextCompiler('function render () {' + rende
 const stringifyStaticRender = staticRenderFns =>
   `[${staticRenderFns.map(stringifyRender).join(',')}]`;
 
-const isAFunctionalComponent = template => 
+const isAFunctionalComponent = template =>
   template && template.attrs && template.functional;
 
 module.exports = {
@@ -60,6 +60,9 @@ module.exports = {
     // @author https://github.com/candyapplecorn
     if (!script && isAFunctionalComponent(template)) {
       return ';'  
+    } else if (!script) {
+      console.log(JSON.stringify(template));
+      return ';'
     }
 
     let render;
