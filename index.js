@@ -52,13 +52,6 @@ module.exports = {
 
     const { script, template } = vueCompiler.parseComponent(src, { pad: false });
 
-    // Vue has functional components now, which don't have script tags.
-    // In order to not fail at trying to parse a non existent script and
-    // thus breaking any tests that use a functional component, just
-    // return a dummy script.
-    // @author https://github.com/candyapplecorn
-    if (!script && isAFunctionalComponent(template)) return ';';
-
     let render;
     let staticRenderFns;
     if (template) {
@@ -69,9 +62,11 @@ module.exports = {
     }
 
     let scriptContent = { code: '' };
-    scriptContent = extractScriptContent(script, filePath);
 
-    const transformKey = script.lang || 'babel';
+    if (!script && isAFunctionalComponent(template)) scriptContent = '';
+    else scriptContent = extractScriptContent(script, filePath);
+
+    const transformKey = (script && script.lang) || 'babel';
     return transforms[transformKey](scriptContent, filePath, render, staticRenderFns);
   },
 };

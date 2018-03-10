@@ -4,6 +4,7 @@ import TsComponent from './fixtures/TsComponent.vue';
 import TypescriptComponent from './fixtures/TypescriptComponent.vue';
 import AbsolutePathComponent from 'test/fixtures/FooComponent.vue';
 import srcImportComponent from './fixtures/srcImportComponent/srcImportComponent.vue';
+import FunctionalComponent from 'test/fixtures/FunctionalComponent.vue';
 
 const doTest = Component => {
   const mockFn = jest.fn();
@@ -46,5 +47,38 @@ describe('preprocessor', () => {
 
   it('should process and parse a .vue component containing src referenecs', () => {
     doTest(srcImportComponent);
+  });
+
+  describe('when processing functional components', () => {
+    let vm;
+
+    beforeEach(
+      (Component => () => {
+        const mockFn = jest.fn();
+
+        vm = new Vue({
+          el: document.createElement('div'),
+          render: h =>
+            h(Component, {
+              context: {
+                props: {
+                  onClick: mockFn,
+                },
+              },
+            }),
+        });
+      })(FunctionalComponent)
+    );
+
+    it('doesn\'t throw errors for a nonexistent script tag', () => {
+      expect(vm._isVue).toEqual(true);
+    });
+
+    /*
+      This appears to be a problem with the vue template compiler
+     */
+    it('doesn\t have $el.querySelector', () => {
+      expect(vm.$el.querySelector).not.toBeDefined();
+    });
   });
 });
