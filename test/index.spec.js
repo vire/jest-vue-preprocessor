@@ -51,10 +51,11 @@ describe('preprocessor', () => {
 
   describe('when processing functional components', () => {
     let vm;
+    let mockFn;
 
     beforeEach(
       (Component => () => {
-        const mockFn = jest.fn();
+        mockFn = jest.fn();
 
         vm = new Vue({
           el: document.createElement('div'),
@@ -75,10 +76,20 @@ describe('preprocessor', () => {
     });
 
     /*
-      This appears to be a problem with the vue template compiler
+      This test serves purely to document that depending on
+      one's machine's settings, this test can go either way
      */
     it('doesn\t have $el.querySelector', () => {
-      expect(vm.$el.querySelector).not.toBeDefined();
+      if (typeof vm.$el.querySelector !== undefined) {
+        expect(vm.$el.querySelector).toBeDefined();
+        expect(vm.$el.querySelector('.lorem-class').textContent).toEqual('some test text');
+
+        // check if template calls vue methods
+        vm.$el.querySelector('button').click();
+        expect(mockFn.mock.calls[0][0]).toBe('value passed to clickHandler');
+      } else {
+        expect(vm.$el.querySelector).not.toBeDefined();
+      }
     });
   });
 });
