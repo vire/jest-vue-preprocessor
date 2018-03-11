@@ -61,10 +61,8 @@ describe('preprocessor', () => {
           el: document.createElement('div'),
           render: h =>
             h(Component, {
-              context: {
-                props: {
-                  onClick: mockFn,
-                },
+              props: {
+                onClick: mockFn,
               },
             }),
         });
