@@ -61,8 +61,10 @@ describe('preprocessor', () => {
           el: document.createElement('div'),
           render: h =>
             h(Component, {
-              props: {
-                onClick: mockFn,
+              context: {
+                props: {
+                  onClick: mockFn,
+                },
               },
             }),
         });
@@ -75,7 +77,7 @@ describe('preprocessor', () => {
 
     /*
       This test serves purely to document that depending on
-      one's machine's settings, this test can go either way
+      a machine's settings, this test can go either way
      */
     it('doesn\t have $el.querySelector', () => {
       if (vm.$el.querySelector) {
