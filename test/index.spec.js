@@ -79,7 +79,7 @@ describe('preprocessor', () => {
       This test serves purely to document that depending on
       a machine's settings, this test can go either way
      */
-    it('doesn\t have $el.querySelector', () => {
+    it('doesn\'t have $el.querySelector', () => {
       if (vm.$el.querySelector) {
         expect(vm.$el.querySelector).toBeDefined();
         expect(vm.$el.querySelector('.lorem-class').textContent).toEqual('some test text');
