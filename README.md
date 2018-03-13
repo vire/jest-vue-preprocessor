@@ -1,4 +1,6 @@
 # jest-vue-preprocessor
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/vire/jest-vue-preprocessor.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/vire/jest-vue-preprocessor.svg?branch=master)](https://travis-ci.org/vire/jest-vue-preprocessor) [![npm version](https://badge.fury.io/js/jest-vue-preprocessor.svg)](https://badge.fury.io/js/jest-vue-preprocessor) [![codecov](https://codecov.io/gh/vire/jest-vue-preprocessor/branch/master/graph/badge.svg)](https://codecov.io/gh/vire/jest-vue-preprocessor) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 
