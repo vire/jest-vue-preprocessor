@@ -41,6 +41,8 @@ const stringifyRender = render => vueNextCompiler('function render () {' + rende
 const stringifyStaticRender = staticRenderFns =>
   `[${staticRenderFns.map(stringifyRender).join(',')}]`;
 
+const isAFunctionalComponent = template => template && template.attrs && template.attrs.functional;
+
 module.exports = {
   process(src, filePath) {
     // code copied from https://github.com/locoslab/vue-typescript-jest/blob/master/preprocessor.js
@@ -60,9 +62,11 @@ module.exports = {
     }
 
     let scriptContent = { code: '' };
-    scriptContent = extractScriptContent(script, filePath);
 
-    const transformKey = script.lang || 'babel';
+    if (!script && isAFunctionalComponent(template)) scriptContent = '';
+    else scriptContent = extractScriptContent(script, filePath);
+
+    const transformKey = (script && script.lang) || 'babel';
     return transforms[transformKey](scriptContent, filePath, render, staticRenderFns);
   },
 };
