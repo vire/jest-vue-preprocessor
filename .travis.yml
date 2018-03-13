@@ -6,7 +6,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - '6'
+  - '8.9'
 env:
   - CXX=g++-4.8
 addons:
@@ -17,7 +17,6 @@ addons:
       - g++-4.8
 before_install:
   - npm install -g codecov
-  - npm install -g yarn --cache-min 999999999
 install:
   - yarn
 script:

@@ -13,7 +13,7 @@
   },
   "author": "Viliam Elischer <code.vire@gmail.com>",
   "engines": {
-    "node": ">= 6.3"
+    "node": ">= 8.9"
   },
   "keywords": ["jest", "vue", "test", "preprocessor", "transform"],
   "dependencies": {
@@ -58,13 +58,12 @@
     "moduleFileExtensions": ["js", "vue"],
     "coverageThreshold": {
       "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
+        "branches": 40,
+        "functions": 80,
+        "lines": 90,
+        "statements": 80
       }
     },
-    "mapCoverage": true,
     "moduleNameMapper": {
       "^test/fixtures/(.*)": "<rootDir>/test/fixtures/$1"
     },
