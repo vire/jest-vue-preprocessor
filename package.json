@@ -19,7 +19,6 @@
   "dependencies": {
     "babel-plugin-transform-runtime": "6.23.0",
     "find-babel-config": "1.1.0",
-    "typescript": "2.5.3",
     "vue-property-decorator": "6.0.0"
   },
   "devDependencies": {
@@ -87,7 +86,8 @@
   },
   "peerDependencies": {
     "vue-template-compiler": "2.5.x",
-    "vue-template-es2015-compiler": "1.6.x"
+    "vue-template-es2015-compiler": "1.6.x",
+    "typescript": ">= 2.0.0"
   },
   "prettier": {
     "printWidth": 100,
