@@ -17,7 +17,7 @@ addons:
       - g++-4.8
 before_install:
   - yarn global add greenkeeper-lockfile@1
-  - npm install -g codecov
+  - yarn global add codecov
 install:
   - yarn
 before_script:
@@ -30,7 +30,6 @@ after_script:
   - greenkeeper-lockfile-upload
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - npm run release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
