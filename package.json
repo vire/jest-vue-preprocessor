@@ -15,7 +15,13 @@
   "engines": {
     "node": ">= 8.9"
   },
-  "keywords": ["jest", "vue", "test", "preprocessor", "transform"],
+  "keywords": [
+    "jest",
+    "vue",
+    "test",
+    "preprocessor",
+    "transform"
+  ],
   "dependencies": {
     "babel-plugin-transform-runtime": "6.23.0",
     "find-babel-config": "1.1.0",
@@ -34,7 +40,7 @@
     "lint-staged": "7.0.0",
     "prettier": "1.11.1",
     "pug": "2.0.1",
-    "semantic-release": "15.0.3",
+    "standard-version": "4.3.0",
     "validate-commit-msg": "2.14.0",
     "vue": "2.5.15",
     "vue-template-compiler": "2.5.15",
@@ -51,11 +57,13 @@
     "test:coverage": "npm t -- --coverage",
     "test:ci": "npm run test:coverage",
     "style": "eslint .",
-    "style:fix": "npm run style -- --fix",
-    "release": "semantic-release pre && npm publish && semantic-release post"
+    "style:fix": "npm run style -- --fix"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "vue"],
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 40,
@@ -82,7 +90,11 @@
     }
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "style:fix", "git add"]
+    "*.js": [
+      "prettier --write",
+      "style:fix",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "vue-template-compiler": "2.5.x",
