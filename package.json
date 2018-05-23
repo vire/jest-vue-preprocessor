@@ -40,7 +40,7 @@
     "lint-staged": "7.1.2",
     "prettier": "1.12.1",
     "pug": "2.0.3",
-    "standard-version": "4.3.0",
+    "standard-version": "4.4.0",
     "validate-commit-msg": "2.14.0",
     "vue": "2.5.15",
     "vue-template-compiler": "2.5.15",
