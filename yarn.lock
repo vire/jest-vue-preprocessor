@@ -1251,9 +1251,9 @@ commander@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.1.0.tgz#d121bbae860d9992a3d517ba96f56588e47c6781"
 
-commitizen@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/commitizen/-/commitizen-3.0.2.tgz#8af8d943c9b97a6a9523d824c654660a43138179"
+commitizen@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/commitizen/-/commitizen-3.0.3.tgz#8a5f43f91313e328d42872582d7cb427281841cb"
   dependencies:
     cachedir "2.1.0"
     cz-conventional-changelog "2.1.0"
@@ -1267,6 +1267,7 @@ commitizen@3.0.2:
     lodash "4.17.11"
     minimist "1.2.0"
     shelljs "0.7.6"
+    strip-bom "3.0.0"
     strip-json-comments "2.0.1"
 
 compare-func@^1.3.1:
