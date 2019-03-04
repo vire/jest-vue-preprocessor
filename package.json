@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "babel-plugin-transform-runtime": "6.23.0",
-    "find-babel-config": "1.1.0",
+    "find-babel-config": "1.2.0",
     "typescript": "2.7.2",
     "vue-property-decorator": "6.1.0"
   },
