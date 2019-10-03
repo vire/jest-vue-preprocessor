@@ -39,7 +39,7 @@
     "jest": "22.4.2",
     "lint-staged": "8.1.6",
     "prettier": "1.18.0",
-    "pug": "2.0.3",
+    "pug": "2.0.4",
     "standard-version": "7.0.0",
     "validate-commit-msg": "2.14.0",
     "vue": "2.5.15",
