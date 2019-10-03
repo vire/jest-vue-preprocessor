@@ -44,7 +44,7 @@
     "validate-commit-msg": "2.14.0",
     "vue": "2.5.15",
     "vue-template-compiler": "2.5.15",
-    "vue-template-es2015-compiler": "1.6.0"
+    "vue-template-es2015-compiler": "1.7.0"
   },
   "scripts": {
     "cz": "git-cz",
