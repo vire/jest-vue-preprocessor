@@ -49,9 +49,6 @@
   },
   "scripts": {
     "cz": "git-cz",
-    "commitmsg": "validate-commit-msg",
-    "prepush": "npm run verify",
-    "precommit": "lint-staged",
     "verify": "npm run style && npm t",
     "test": "jest",
     "test:watch": "npm t -- --watch",
@@ -110,5 +107,12 @@
     "jsxBracketSameLine": true,
     "singleQuote": true,
     "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run verify"
+    }
   }
 }
