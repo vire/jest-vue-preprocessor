@@ -1,7 +1,7 @@
 /* eslint-env node */
 
-const template = require('babel-template');
-const babelCore = require('babel-core');
+const template = require('@babel/template').default;
+const babelCore = require('@babel/core');
 const t = babelCore.types;
 const findBabelConfig = require('find-babel-config');
 
