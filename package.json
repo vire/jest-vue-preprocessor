@@ -13,7 +13,7 @@
   },
   "author": "Viliam Elischer <code.vire@gmail.com>",
   "engines": {
-    "node": ">= 8.9"
+    "node": ">= 8.16"
   },
   "keywords": [
     "jest",

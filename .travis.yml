@@ -6,7 +6,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - '8.9'
+  - '8.16'
 env:
   - CXX=g++-4.8
 addons:
