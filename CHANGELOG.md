@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/vire/jest-vue-preprocessor/compare/v1.6.0...v1.7.0) (2019-10-11)
+
+
+### Features
+
+* **deps:** Move typescript to peerDependencies ([#145](https://github.com/vire/jest-vue-preprocessor/issues/145)) ([d5b4143](https://github.com/vire/jest-vue-preprocessor/commit/d5b41430cbe458e7c411e4880355282860853318))
+
 ## [1.6.0](https://github.com/vire/jest-vue-preprocessor/compare/v1.5.0...v1.6.0) (2019-10-10)
 
 <a name="1.4.0"></a>
