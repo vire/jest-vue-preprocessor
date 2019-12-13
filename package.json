@@ -44,7 +44,7 @@
     "typescript": "3.6.4",
     "validate-commit-msg": "2.14.0",
     "vue": "2.6.11",
-    "vue-template-compiler": "2.6.10",
+    "vue-template-compiler": "2.6.11",
     "vue-template-es2015-compiler": "1.9.1"
   },
   "scripts": {
