@@ -28,8 +28,8 @@
     "vue-property-decorator": "8.3.0"
   },
   "devDependencies": {
-    "@babel/core": "7.7.4",
-    "@babel/preset-env": "7.7.4",
+    "@babel/core": "7.7.7",
+    "@babel/preset-env": "7.7.7",
     "@babel/template": "7.7.4",
     "babel-jest": "24.9.0",
     "commitizen": "3.1.2",
