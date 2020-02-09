@@ -18,7 +18,7 @@ function appendRenderPlugin(render, staticRenderFns) {
     );
     __vue__options__.render = ${render};
     __vue__options__.staticRenderFns = ${staticRenderFns};
-  `);
+  `, {placeholderPattern: false});
 
   return () => {
     if (!render || !staticRenderFns) {
