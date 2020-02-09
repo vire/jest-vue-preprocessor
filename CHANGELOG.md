@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/vire/jest-vue-preprocessor/compare/v1.7.0...v1.7.1) (2020-02-09)
+
+
+### Bug Fixes
+
+* **package:** update vue-property-decorator to version 8.3.0 ([15aa2ba](https://github.com/vire/jest-vue-preprocessor/commit/15aa2ba67150acac703f9c0085cb32005f89937b))
+* transform uses placeholderPattern: false ([#163](https://github.com/vire/jest-vue-preprocessor/issues/163)) ([e73fb5b](https://github.com/vire/jest-vue-preprocessor/commit/e73fb5b59adad2218ae955315bd654691f00a67f))
+
 ## [1.7.0](https://github.com/vire/jest-vue-preprocessor/compare/v1.6.0...v1.7.0) (2019-10-11)
 
 
