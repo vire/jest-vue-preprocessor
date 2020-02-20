@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="lorem-class">some test text</div>
+    <div class="some-class">NOTAPLACEHOLDER</div>
     <button v-on:click="clickHandler('value passed to clickHandler')">Click Me!</button>
   </div>
 </template>
