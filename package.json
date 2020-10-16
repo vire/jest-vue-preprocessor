@@ -23,14 +23,14 @@
     "transform"
   ],
   "dependencies": {
+    "@babel/core": "7.8.7",
+    "@babel/template": "7.8.6",
     "babel-plugin-transform-runtime": "6.23.0",
     "find-babel-config": "1.2.0",
     "vue-property-decorator": "8.3.0"
   },
   "devDependencies": {
-    "@babel/core": "7.8.7",
     "@babel/preset-env": "7.8.7",
-    "@babel/template": "7.8.6",
     "babel-jest": "24.9.0",
     "commitizen": "3.1.2",
     "cz-conventional-changelog": "2.1.0",
@@ -97,7 +97,13 @@
   "peerDependencies": {
     "typescript": "*",
     "vue-template-compiler": "2.6.x",
-    "vue-template-es2015-compiler": "1.9.x"
+    "vue-template-es2015-compiler": "1.9.x",
+    "pug": "^2.0.4"
+  },
+  "peerDependenciesMeta": {
+    "pug": {
+      "optional": true
+    }
   },
   "prettier": {
     "printWidth": 100,
