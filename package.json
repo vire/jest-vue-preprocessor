@@ -39,7 +39,7 @@
     "jest": "24.9.0",
     "lint-staged": "10.0.9",
     "prettier": "1.19.0",
-    "pug": "2.0.4",
+    "pug": "3.0.1",
     "standard-version": "7.1.0",
     "typescript": "3.6.4",
     "validate-commit-msg": "2.14.0",
